@@ -14,6 +14,13 @@ st.set_page_config(layout='wide', page_title="Real State Analysis")
 st.markdown("""
 <style>
 
+/* Title فقط (st.title) باللون الأحمر الخاص بـ Plotly */
+h1 {
+    color: #EF553B !important;   /* Red-Orange used by Plotly */
+    text-align: center !important;
+}
+
+/* باقي التنسيقات */
 .block-container {
     width: 100% !important;
     max-width: 100% !important;
@@ -21,23 +28,19 @@ st.markdown("""
     padding-right: 4rem !important;
 }
 
-/* Center ALL text and headings */
-h1, h2, h3, h4, h5, h6, p {
+p {
     text-align: center !important;
 }
 
-/* Center KPIs */
 [data-testid="metric-container"] {
     text-align: center !important;
     margin: auto !important;
 }
 
-/* Center plotly charts */
 .stPlotlyChart {
     margin: auto !important;
 }
 
-/* Center all streamlit wrapped elements */
 .css-1kyxreq, .element-container {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -45,6 +48,8 @@ h1, h2, h3, h4, h5, h6, p {
 
 </style>
 """, unsafe_allow_html=True)
+
+
 
 
 # -------------------------
