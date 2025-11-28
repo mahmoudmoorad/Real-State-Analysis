@@ -141,17 +141,30 @@ with tab1:
     # ========================= CHART PLACEHOLDERS =========================
     col_a, col_b = st.columns(2)
     with col_a:
-        st.subheader('Distribution of Price per sqm')
+        st.subheader('Average price per type')
+        tbl=df.groupby(['type'])['price_per_sqm'].mean().reset_index()
         st.plotly_chart(
-        px.histogram(df, x="price_per_sqm", nbins=50)
+        px.bar(tbl, x="type", y='price_per_sqm')
         )
 
     with col_b:
-        htmap=df[df.select_dtypes('number').columns].corr()
-        st.subheader('Correlation Heatmap')
+        st.subheader('Average price per compound (Top 10)')
+        tbl=df.groupby(['compound'])['price_per_sqm'].mean().reset_index().head(10)
         st.plotly_chart(
-            px.imshow(htmap)
+        px.bar(tbl, x="compound", y='price_per_sqm')
         )
+
+    st.subheader('Average price per city')
+    st.plotly_chart(
+        px.bar(
+            df,
+            x="city",
+            y="price_per_sqm",
+            opacity=0.6,
+        ).update_xaxes(tickangle=45)
+
+    )
+
     st.subheader('Room Ratio vs Price')
     df['room_ratio'] = df['bedrooms_num'] / df['bathrooms']
     st.plotly_chart(
@@ -165,16 +178,7 @@ with tab1:
         hover_data=["bedrooms_num", "bathrooms", "size_sqm", "type"],
         ))
 
-    st.subheader('Relationship Between Area and Price per sqm')
-    st.plotly_chart(
-        px.scatter(
-            df,
-            x="district",
-            y="price_per_sqm",
-            opacity=0.6,
-        ).update_xaxes(tickangle=45)
 
-    )
 
 
 # --------------------------------------------------
