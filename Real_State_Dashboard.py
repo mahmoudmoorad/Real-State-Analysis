@@ -3,6 +3,16 @@
 import streamlit as st
 import pandas as pd 
 import plotly.express as px 
+import plotly.io as pio
+
+custom_template = pio.templates["plotly"].update({
+    "layout": {
+        "colorway": px.colors.sequential.Burg,  # set of categorical colors
+    }
+})
+
+pio.templates["my_theme"] = custom_template
+pio.templates.default = "my_theme"
 
 # Page Config
 st.set_page_config(layout='wide', page_title="Real State Analysis")
