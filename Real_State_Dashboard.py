@@ -134,7 +134,7 @@ with tab1:
     left_space, col1, col2, col3, col4, col5, col6, right_space = st.columns([1, 2, 2, 2, 2, 2, 2, 1])
 
     with col1:
-        st.metric("Total Listings", format_number(total_listings))
+        st.metric("Total Units", format_number(total_listings))
 
     with col2:
         st.metric("Average Price", format_number(avg_price))
@@ -239,7 +239,6 @@ with tab2:
                 size="Number of units",
                 color="year",
                 text="Number of units",
-                title="Delivery Units Supply Trend per Year",
                 size_max=60
             )
         )
@@ -303,7 +302,7 @@ with tab3:
             values="price_per_sqm",
             color="price_per_sqm",
             title="Top 10 Compounds Within Top 10 Cities (By Avg Price per SQM)",
-            color_continuous_scale="Viridis"
+            color_continuous_scale="Magenta"
             )
         )
 
@@ -332,7 +331,7 @@ with tab3:
                 path=["category", "city"],
                 values="avg_price_per_sqm",
                 color="supply",
-                color_continuous_scale="Viridis"
+                color_continuous_scale="Magenta"
                 )
         )
     with cc2:
